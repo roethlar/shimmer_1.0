@@ -82,17 +82,3 @@ Human‑readable exports
 ## Notes on Routing/Agents
 
 The text container uses a two‑symbol routing pair (e.g., `AB`, `γλ`). These are application‑defined identifiers, not tied to specific teams. For T9p’s 2‑bit agent fields, assign per‑session mappings (e.g., 00,01,10,11) and record them in your session registry.
-
-## Source Index (for reference)
-
-Key upstream files consolidated here (paths from the research repo):
-
-- `language/specs/T9_SEMANTIC_VECTOR_PROTOCOL_v2.0.shimmer`
-- `shimmer-spec/docs/T9_PLUS_SPECIFICATION_v1.0.md`
-- `language/specs/CONTAINER_FORMAT_v2.0.shimmer`
-- `technical/training/T9p_Binary_Container_Spec.md`
-- `proposals/shimmer_spec_proposal.jsonl` (ctag, parity2b rules)
-
-## License
-
-This spec reflects your internal work; place under your preferred license or keep private. No new license terms are introduced by this consolidation.
