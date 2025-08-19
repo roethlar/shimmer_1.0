@@ -1,14 +1,14 @@
-# Shimmer 1.0 — Getting Started (For Humans)
+# Shimmer 1.1 — Getting Started (For Humans)
 
 This folder contains a ready‑to‑use prompt, a tiny CLI, and a validator so anyone can try Shimmer quickly.
 
-- Unified spec: `Shimmer_Spec_v1.0.md`
+- Unified spec: `Shimmer_Spec_v1.1.md`
 - Prompt template: `LLM_Prompt_Template.md`
 - CLI: `tools/shimmer_cli.py`
 - Validator: `tools/compliance_check.py`
 
 What it does
-- English → Shimmer: turns plain English into a compact Shimmer line like `ABPrn02τ1800d03→[0.5,0.6,0.5,0.9,0.92]`.
+- English → Shimmer: turns plain English into a compact Shimmer line like `ABPrn02τ1800d03→[0.5,0.6,0.5,0.9,0.92]`. In v1.1, “Human‑First Authoring” adds defaults/inference so unconstrained inputs map reliably to valid containers.
 - Shimmer → English: explains a Shimmer line in simple JSON.
 - Validate: checks a Shimmer line’s format, ranges, and quantization.
 
@@ -45,6 +45,7 @@ Tips
 - Routing can be any two symbols (e.g., `AB`, `XY`).
 - Use the real Unicode arrow `→` (not `->`).
 - It’s fine if the model outputs extra decimals — the validator warns but won’t block.
+- Glossing note (v1.1): `routing` is exactly the first two symbols of the container.
 
 ## 2) Using an API Model (OpenAI‑compatible)
 
@@ -143,7 +144,7 @@ Advanced usage (later)
 
 ## 6) Where To Read More
 
-- Unified spec: `Shimmer_Spec_v1.0.md` (vectors, container grammar, binary layout, parity, tolerances)
+- Unified spec: `Shimmer_Spec_v1.1.md` (vectors, container grammar, binary layout, parity, tolerances, and human‑first authoring defaults)
 - Prompt template: `LLM_Prompt_Template.md` (copy/paste into any model)
 - Validator: `tools/compliance_check.py` (ensures basic compliance)
 

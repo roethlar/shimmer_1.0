@@ -7,7 +7,7 @@ Each non-empty input line is converted with the Authoring Template. Blank lines 
 Usage:
   python3 shimmer_batch_en2sh.py \
     --in /path/in.txt --out /path/out.shimmer \
-    --provider ollama --model qwen2.5:latest --routing AB --action auto
+    --provider ollama --model shimmer-qwen:latest --routing AB --action auto
 
 Notes:
 - Keep each line to one coherent instruction/statement. If you need multiple messages, use multiple lines.

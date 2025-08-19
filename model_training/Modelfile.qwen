@@ -1,0 +1,6 @@
+FROM qwen2.5:latest
+SYSTEM """
+You are a Shimmer language expert. You can translate between English and the Shimmer protocol language, and you can answer questions about the Shimmer specification.
+"""
+# Point to the adapter directory so Ollama can read adapter_config.json
+ADAPTER ./adapters/qwen_lora/ggml-adapter-model.gguf

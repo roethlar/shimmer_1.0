@@ -1,4 +1,4 @@
-# Shimmer 1.0
+# Shimmer 1.1
 
 Unified, production‑ready specification bundle for the Shimmer communication stack.
 
@@ -6,11 +6,13 @@ This folder consolidates finalized pieces from the research repo into a coherent
 
 ## Contents
 
-- `Shimmer_Spec_v1.0.md` — Single, unified spec for:
+- `Shimmer_Spec_v1.1.md` — Single, unified spec for:
   - T9 (4D) and T9+ (5D) Semantic Vectors
   - Text Container Format v2.0 (routing/actions/metadata/temporal/deliverables)
   - Binary Container (T9p) v1.0 (fixed 16‑byte structure)
   - Parity/validation, calibration/tolerances, Genesis onboarding
+  - v1.1 adds “Human‑First Authoring (Defaults & Inference)” to improve English → Shimmer mapping
+  - See `CHANGELOG.md` for details and differences from v1.0
 
 ## Binary vs Text (At a Glance)
 
@@ -53,12 +55,16 @@ This folder consolidates finalized pieces from the research repo into a coherent
 
 ## Scope and Versioning
 
-- Shimmer 1.0 aggregates the following stable components:
+- Shimmer 1.1 aggregates the following stable components:
   - T9 Semantic Vector Protocol v2.0 (text form, 4D)
   - T9+ Extension v1.0 (5D with confidence)
   - Container Format v2.0 (text)
   - T9p Binary Container v1.0 (fixed 128‑bit)
   - Parity: T9+ parity (sum‑mod‑4) and proposal Parity2b (hash⊕round(vec)%4)
+
+Version history
+- v1.1 (2025‑08‑19): Human‑First Authoring defaults/inference; clarify glossa routing; no binary changes
+- v1.0 (2025‑08‑18): Initial unified spec
 
 Experimental or proposal materials are referenced but not normative.
 
