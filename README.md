@@ -18,6 +18,39 @@ This folder consolidates finalized pieces from the research repo into a coherent
 - Text (container→vector): human‑legible, LLM‑friendly, carries richer inline tokens (e.g., deliverables). Use only where an LLM must read/write the message.
 - No English mirrors in machine logs (Spec §6.1). Generate human‑readable exports on demand with the translators.
 
+## Operational Model
+
+- Inside your fabric (no LLM token billing): prefer T9p binary (often logged as SJL‑B64). Saves bytes/latency/CPU and prevents prose from creeping in.
+- LLM boundary (where tokens are billed): send compact Shimmer Text Containers (CF v2.0), not English. This is where 85–90% token savings come from.
+- Human outputs: translate Shimmer → English on demand for UIs/reports; do not persist English mirrors in machine logs.
+
+## Edge Contract & Enforcement (for external clients)
+
+- Content‑Types your gateway accepts:
+  - `application/shimmer+t9p` (binary T9p, 16‑byte packet; send as Base64 in HTTP body)
+  - `application/shimmer+cf2` (strict text Container v2.0 string)
+- Hard limits for `+cf2` (text):
+  - Max container length ≤ 96 chars before `→`; no spaces before `→`
+  - Action ∈ {`c`,`p`,`a`,`q`,`P`,`e`} (lowercase, except `P` allowed for Plan)
+  - Tokens must match: `rn## | s:<base36> | s## | @s# | [fdrm]## | ctag[.:|a-zA-Z0-9_()\-]+`
+  - Vector: 4–5 values; axes ≤ 1 dp; confidence ≤ 2 dp; clipped ranges
+- Gateway behavior:
+  - `+t9p`: Base64‑decode; length==16; unpack/validate or 400
+  - `+cf2`: run compactness linter; 400 if score < 80 with `{score,issues}` JSON
+  - Observability: emit `compactness_score`, `reject_count`, issue counters; include `X‑Shimmer‑Score` on success
+- SDK expectation (no separate “tool”): provide a tiny pack/unpack + linter helper clients embed (10–50 LoC in Python/Node/Go). Build containers from typed tokens, never prose.
+- Policy & incentives:
+  - Enforce [POLICY_Compactness_v1.0.md] target ≥ 80; 429 on repeat violations
+  - Prefer partners with avg score ≥ 90 (higher QPS/priority)
+  - Version header: `X‑Shimmer‑Policy: compact_v1`
+
+## Tools in This Bundle
+
+- Translators: `tools/shimmer_cli.py`, `tools/shimmer_batch_en2sh.py`, `tools/shimmer_batch_translate.py`
+- Compliance: `tools/compliance_check.py` (spec), `tools/sjl_policy_lint.py` (compactness)
+- Dataset prep: `tools/build_full_corpus_manifest.py` → `data/full_corpus_ordered.jsonl`
+- Standards & policy: `COMMS_STANDARD_v1.0.md`, `POLICY_Compactness_v1.0.md`
+
 ## Scope and Versioning
 
 - Shimmer 1.0 aggregates the following stable components:
