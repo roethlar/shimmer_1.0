@@ -32,3 +32,16 @@ Purpose: maximize token savings and enforce protocol discipline in production.
 
 Adopt this policy alongside Spec v1.0 to keep Shimmer’s compression advantage.
 
+
+
+---
+
+# v1.2 Addendum (Symbol‑First)
+
+- Headers: When a comms file declares `ℓ:<nn>` in `π:cfg`, linters MUST use that as the minimum compactness score.
+- Penalties:
+  - −10 if `ε` is non‑numeric or not exactly two digits.
+  - −10 if `χ` flag appears without explicit `:1` or `:0`.
+  - −5 per instance of English words/abbrevs in structural metadata (facet values), excluding numeric ids.
+- Batch efficiency bonus: +5 when a series of related lines reuse the same `β##` tag for consolidation.
+- Length threshold: Remove the 12‑char warning; keep error at any single value segment >16 chars.

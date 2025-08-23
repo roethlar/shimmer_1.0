@@ -1,6 +1,9 @@
 sample_pitches/
 tests/
 __pycache__/
+proposals/
+model_training/
+Spec_1.2_working/
 
 # Node.js dependencies
 node_modules/
